@@ -1,0 +1,13 @@
+status=`curl -o /dev/null -s -w "%{http_code}" 192.168.43.137:9095`
+echo $status
+if [[ $status == 200 ]] 
+then 
+echo "site is working"
+echo " now merging the branch"
+git checkout master
+git merge origin/dev
+else
+echo "Site is not working"
+echo $status
+exit 1
+fi
