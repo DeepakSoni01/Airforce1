@@ -1,0 +1,8 @@
+sudo mkdir /task1/dir_master
+sudo cp -rvf * /task1/dir_master
+if sudo docker ps |grep masterdocker
+then
+echo ".......Already Running........"
+else
+sudo docker run -dit -p 9096:80 -v /task1/dir_master:/usr/local/apache2/htdocs --name masterdocker httpd
+fi
